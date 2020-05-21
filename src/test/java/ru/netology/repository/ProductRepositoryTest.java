@@ -10,7 +10,6 @@ import ru.netology.exception.NotFoundException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ProductRepositoryTest {
-    private NotFoundException notFoundException = new NotFoundException();
     private ProductRepository repository = new ProductRepository();
     private Product book1 = new Book(1, "книга", 120, "автор", 500, 1920);
     private Product book2 = new Book(2, "другая книга", 120, "другой автор", 300, 2000);
@@ -33,8 +32,7 @@ class ProductRepositoryTest {
 
     @Test
     public void shouldNPE() {
-        repository.removeById(3);
-        assertThrows(NullPointerException.class, () -> notFoundException.NPE());
+        assertThrows(NotFoundException.class, () -> repository.removeById(3) );
     }
 
 }
